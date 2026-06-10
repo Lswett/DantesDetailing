@@ -808,11 +808,17 @@ textarea:focus {
   }
 
   .site-header {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: minmax(0, auto) 1fr;
   }
 
   .mobile-menu {
     display: block;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .site-header .brand {
+    grid-column: 1;
   }
 
   .card-grid,
