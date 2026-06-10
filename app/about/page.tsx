@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { staticAssetPath } from "@/lib/site-settings";
 
 export default function AboutPage() {
   return (
@@ -27,7 +28,7 @@ export default function AboutPage() {
               Book Now
             </Link>
           </div>
-          <Image src="/images/hero-detailing.png" alt="Dante's Detailing mobile auto care" width={900} height={620} />
+          <Image src={staticAssetPath("/images/hero-detailing.png")} alt="Dante's Detailing mobile auto care" width={900} height={620} />
         </div>
       </section>
     </main>

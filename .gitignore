@@ -3,6 +3,7 @@ node_modules
 dist
 coverage
 .env
+out
 *.db
 *.db-journal
 prisma/dev.db

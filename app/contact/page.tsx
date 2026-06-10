@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { DirectContactNotice } from "@/components/DirectContactNotice";
 import { business } from "@/lib/site-data";
 
-export default function ContactPage({ searchParams }: { searchParams: { submitted?: string } }) {
+export default function ContactPage() {
   return (
     <main>
       <section className="page-hero">
         <div>
           <p className="eyebrow">Contact</p>
           <h1>Talk to Dante&apos;s Detailing.</h1>
-          <p>Questions about services, vehicle condition, service area, or a future detail? Send a message and Dante&apos;s Detailing will follow up.</p>
+          <p>Questions about services, vehicle condition, service area, or a future detail? Use the direct contact information below for now.</p>
         </div>
       </section>
       <section className="section">
@@ -18,14 +19,14 @@ export default function ContactPage({ searchParams }: { searchParams: { submitte
             <h2>Serving {business.serviceArea}</h2>
             <p>Mobile detailing means the service comes to your driveway, workplace, or other convenient approved location.</p>
             <p>
-              Need to get on the schedule now? Use the booking request flow so vehicle details, service choice, and preferred timing are captured together.
+              Need to get on the schedule now? The online booking flow is coming soon, so contact Dante directly for the fastest response.
             </p>
             <Link className="button button-red" href="/book">
               Book Appointment
             </Link>
           </div>
           <div>
-            {searchParams.submitted ? <div className="success-box">Message received. Dante&apos;s Detailing will follow up soon.</div> : null}
+            <DirectContactNotice />
             <ContactForm />
           </div>
         </div>

@@ -654,6 +654,14 @@ textarea {
   font-family: var(--body);
 }
 
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -694,6 +702,65 @@ textarea:focus {
   padding: 1rem;
   background: rgba(30, 200, 90, 0.1);
   color: #b6ffd1;
+}
+
+.direct-contact {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(231, 25, 33, 0.45);
+  border-radius: 5px;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background:
+    linear-gradient(135deg, rgba(231, 25, 33, 0.18), transparent 58%),
+    var(--panel);
+}
+
+.direct-contact h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-style: italic;
+}
+
+.direct-contact p {
+  margin: 0;
+}
+
+.direct-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.direct-contact-grid a,
+.direct-contact-grid div {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.85rem;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.direct-contact-grid svg {
+  flex: 0 0 auto;
+  color: var(--red);
+}
+
+.direct-contact-grid span {
+  display: grid;
+  min-width: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.direct-contact-grid strong {
+  color: white;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .admin-grid {
@@ -790,6 +857,7 @@ textarea:focus {
 
   .gallery-grid,
   .form-grid,
+  .direct-contact-grid,
   .site-footer {
     grid-template-columns: 1fr;
   }

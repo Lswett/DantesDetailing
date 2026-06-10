@@ -77,3 +77,32 @@ The `/admin` route is a placeholder dashboard with disabled CMS sections. It is 
 ## Deployment Notes
 
 SQLite is suitable for local development. For production, switch `DATABASE_URL` to Postgres and update the Prisma datasource provider from `sqlite` to `postgresql`, then run a production migration.
+
+## Temporary GitHub Pages Deployment
+
+This `github-pages-static` branch is a temporary static-demo version for:
+
+`https://lswett.github.io/DantesDetailing/`
+
+It is configured with `output: "export"`, `basePath: "/DantesDetailing"`, unoptimized images, and trailing slashes so static routes and assets work on GitHub Pages.
+
+Build locally:
+
+```bash
+npm ci
+npm run build
+```
+
+Preview the exported site locally:
+
+```bash
+npx serve out
+```
+
+Because this branch is built for the `/DantesDetailing/` GitHub Pages subpath, simple local static servers may need a subpath mount or proxy to preview assets exactly as production will serve them. The deployment artifact itself should still upload the `out` directory root.
+
+Temporary contact info is centralized in:
+
+`lib/site-settings.ts`
+
+Update phone, email, service area, and social placeholder links there. Forms are disabled on this branch because GitHub Pages cannot run the backend, API routes, Prisma, or server actions. Booking and contact UI remains visible for design review, but visitors are directed to contact Dante directly until real hosting/backend email handling is added.

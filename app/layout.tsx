@@ -7,7 +7,7 @@ import "@fontsource/teko/700.css";
 import "@fontsource/roboto-condensed/400.css";
 import "@fontsource/roboto-condensed/700.css";
 import "./globals.css";
-import { business } from "@/lib/site-data";
+import { siteSettings } from "@/lib/site-settings";
 
 export const metadata: Metadata = {
   title: "Dante's Detailing | Mobile Auto Detailing in Genesee County",
@@ -68,7 +68,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span>Dante&apos;s</span>
               <strong>Detailing</strong>
             </Link>
-            <p>{business.serviceArea} mobile detailing. We come to you.</p>
+            <p>{siteSettings.serviceArea} mobile detailing. We come to you.</p>
+            <p>
+              <a href={`tel:${siteSettings.phone.replace(/[^0-9]/g, "")}`}>{siteSettings.phone}</a>
+              {" / "}
+              <a href={`mailto:${siteSettings.email}`}>{siteSettings.email}</a>
+            </p>
             <Link className="button button-red" href="/book">
               Book Now
             </Link>

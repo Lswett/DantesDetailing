@@ -1,46 +1,29 @@
-"use client";
-
-import { useActionState } from "react";
-import { submitContact } from "@/lib/actions";
-import type { BookingState } from "@/lib/validation";
-
-const initialState: BookingState = { ok: false, message: "" };
-
 export function ContactForm() {
-  const [state, formAction, pending] = useActionState(submitContact, initialState);
-
   return (
-    <form action={formAction} className="form-panel">
+    <form className="form-panel" aria-disabled="true">
       <input className="hp" name="company" tabIndex={-1} autoComplete="off" />
       <div className="form-grid">
         <label>
           Name
-          <input name="name" required minLength={2} />
-          <FieldError errors={state.fieldErrors?.name} />
+          <input name="name" minLength={2} disabled />
         </label>
         <label>
           Email
-          <input name="email" type="email" required />
-          <FieldError errors={state.fieldErrors?.email} />
+          <input name="email" type="email" disabled />
         </label>
         <label>
           Phone
-          <input name="phone" type="tel" />
+          <input name="phone" type="tel" disabled />
         </label>
       </div>
       <label>
         Message
-        <textarea name="message" rows={6} required minLength={10} />
-        <FieldError errors={state.fieldErrors?.message} />
+        <textarea name="message" rows={6} minLength={10} disabled />
       </label>
-      {state.message ? <p className="form-error">{state.message}</p> : null}
-      <button className="button button-red" type="submit" disabled={pending}>
-        {pending ? "Sending..." : "Send Message"}
+      <p className="form-error">Online contact forms are coming soon. Please contact Dante directly for now.</p>
+      <button className="button button-red" type="button" disabled>
+        Contact Directly
       </button>
     </form>
   );
-}
-
-function FieldError({ errors }: { errors?: string[] }) {
-  return errors?.[0] ? <span className="field-error">{errors[0]}</span> : null;
 }

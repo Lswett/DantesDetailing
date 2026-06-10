@@ -1,3 +1,5 @@
+import { staticAssetPath } from "./site-settings";
+
 export const business = {
   name: "Dante's Detailing",
   shortName: "Dante's",
@@ -15,7 +17,7 @@ export const services = [
       "Thorough hand wash, wheel and tire cleaning, bug removal, drying, and a crisp finish for daily drivers, trucks, and weekend cars.",
     startingAt: 50,
     duration: "60-90 minutes",
-    image: "/images/exterior-wash.png",
+    image: staticAssetPath("/images/exterior-wash.png"),
     includes: [
       "Hand wash",
       "Wheel and tire clean",
@@ -30,7 +32,7 @@ export const services = [
       "Deep interior reset for seats, carpets, consoles, panels, vents, and high-touch surfaces with a clean, comfortable finish.",
     startingAt: 100,
     duration: "2-4 hours",
-    image: "/images/interior-detailing.png",
+    image: staticAssetPath("/images/interior-detailing.png"),
     includes: [
       "Full interior vacuum",
       "Steam clean",
@@ -46,7 +48,7 @@ export const services = [
       "Restore clarity to cloudy, oxidized headlights to improve appearance, nighttime visibility, and safer driving.",
     startingAt: 60,
     duration: "45-75 minutes",
-    image: "/images/headlight-restoration.png",
+    image: staticAssetPath("/images/headlight-restoration.png"),
     includes: [
       "Polish and restore",
       "UV sealant protection",
@@ -113,40 +115,40 @@ export const galleryImages = [
   {
     title: "Foam Wash Finish",
     category: "Exterior",
-    beforeUrl: "/images/exterior-wash.png",
-    afterUrl: "/images/hero-detailing.png",
+    beforeUrl: staticAssetPath("/images/exterior-wash.png"),
+    afterUrl: staticAssetPath("/images/hero-detailing.png"),
     alt: "Glossy detailed vehicles after exterior wash",
     featured: true,
   },
   {
     title: "Interior Reset",
     category: "Interior",
-    beforeUrl: "/images/interior-detailing.png",
-    afterUrl: "/images/interior-detailing.png",
+    beforeUrl: staticAssetPath("/images/interior-detailing.png"),
+    afterUrl: staticAssetPath("/images/interior-detailing.png"),
     alt: "Clean black leather vehicle interior after detailing",
     featured: true,
   },
   {
     title: "Headlight Clarity",
     category: "Headlights",
-    beforeUrl: "/images/headlight-restoration.png",
-    afterUrl: "/images/headlight-restoration.png",
+    beforeUrl: staticAssetPath("/images/headlight-restoration.png"),
+    afterUrl: staticAssetPath("/images/headlight-restoration.png"),
     alt: "Headlight restoration before and after comparison",
     featured: true,
   },
   {
     title: "Work Truck Cleanup",
     category: "Trucks",
-    beforeUrl: "/images/exterior-wash.png",
-    afterUrl: "/images/hero-detailing.png",
+    beforeUrl: staticAssetPath("/images/exterior-wash.png"),
+    afterUrl: staticAssetPath("/images/hero-detailing.png"),
     alt: "Detailed black pickup truck",
     featured: false,
   },
   {
     title: "Classic Car Care",
     category: "Classics",
-    beforeUrl: "/images/headlight-restoration.png",
-    afterUrl: "/images/hero-detailing.png",
+    beforeUrl: staticAssetPath("/images/headlight-restoration.png"),
+    afterUrl: staticAssetPath("/images/hero-detailing.png"),
     alt: "Classic-inspired premium detailing finish",
     featured: false,
   },

@@ -8,13 +8,14 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { ServiceCard } from "@/components/ServiceCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { business, galleryImages, memberships, services, testimonials, vehicleCategories } from "@/lib/site-data";
+import { staticAssetPath } from "@/lib/site-settings";
 
 export default function HomePage() {
   return (
     <main>
       <section className="hero">
         <div className="hero-image">
-          <Image src="/images/hero-detailing.png" alt="Detailed sports car and truck" fill priority sizes="100vw" />
+          <Image src={staticAssetPath("/images/hero-detailing.png")} alt="Detailed sports car and truck" fill priority sizes="100vw" />
         </div>
         <div className="hero-content">
           <p className="eyebrow">{business.serviceArea} mobile detailing</p>

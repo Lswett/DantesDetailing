@@ -1,10 +1,11 @@
 import { BookingForm } from "@/components/BookingForm";
+import { DirectContactNotice } from "@/components/DirectContactNotice";
 import { services } from "@/lib/site-data";
 
 export default function BookPage({
   searchParams,
 }: {
-  searchParams: { submitted?: string; service?: string; membership?: string };
+  searchParams: { service?: string; membership?: string };
 }) {
   return (
     <main>
@@ -12,16 +13,12 @@ export default function BookPage({
         <div>
           <p className="eyebrow">Book now</p>
           <h1>Request your mobile detail.</h1>
-          <p>No payment is required today. Submit the request and Dante&apos;s Detailing will confirm price, timing, and location details.</p>
+          <p>Online booking is coming soon. For now, use the direct contact information below to confirm price, timing, and location details.</p>
         </div>
       </section>
       <section className="section">
         <div className="section-narrow">
-          {searchParams.submitted ? (
-            <div className="success-box">
-              Booking request received. Dante&apos;s Detailing will contact you to confirm the appointment.
-            </div>
-          ) : null}
+          <DirectContactNotice />
           <BookingForm
             services={services.map((service) => service.name)}
             selectedService={searchParams.service}
