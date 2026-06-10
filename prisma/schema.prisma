@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String
+  startingAt  Int
+  duration    String
+  image       String
+  includes    String
+  featured    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  bookingRequests BookingRequest[]
+  pricingOptions  PricingOption[]
+}
+
+model PricingOption {
+  id          String   @id @default(cuid())
+  serviceId   String
+  label       String
+  startingAt  Int
+  description String?
+  service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BookingRequest {
+  id                   String   @id @default(cuid())
+  name                 String
+  email                String
+  phone                String
+  location             String
+  vehicle              String
+  vehicleType          String
+  desiredService       String
+  serviceId            String?
+  conditionNotes       String?
+  preferredDate        DateTime?
+  preferredTimeWindow  String
+  membershipInterest   Boolean  @default(false)
+  consentToContact     Boolean  @default(false)
+  status               String   @default("new")
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  service Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  vehicle   String
+  quote     String
+  rating    Int      @default(5)
+  featured  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  title     String
+  category  String
+  beforeUrl String?
+  afterUrl  String
+  alt       String
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MembershipPlan {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String
+  startingAt  Int
+  interval    String   @default("month")
+  includes    String
+  featured    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("owner")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
